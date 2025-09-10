@@ -1,4 +1,5 @@
 import { ModeToggle } from "@/components/mode-toggle";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -306,6 +307,33 @@ export default function Home() {
                   </button>
                 </div>
               </div>
+            </div>
+            <div>
+              <div className="flex justify-between">
+                <div className="text-2xl font-bold uppercase">Most popular</div>
+                <div className="flex">
+                  <ChevronLeft />
+                  <ChevronRight />
+                </div>
+              </div>
+            </div>
+            <div className="bg-yellow-100 p-10 rounded-3xl space-y-8">
+              <div>
+                <h2 className="text-black text-3xl font-bold uppercase max-w-[10rem]">
+                  5-minute draws
+                </h2>
+                <p className="text-[#B38626] text-2xl font-bold uppercase">
+                  Get your tickets before the time runs out
+                </p>
+              </div>
+              <button className="bg-linear-to-b from-[#B38626] to-[#FCEE96] text-black px-4 py-2 rounded-3xl font-bold">
+                Play now
+              </button>
+            </div>
+            <div className="flex justify-between">
+              <div className="bg-linear-to-r from-[#C471F5] to-[#FA71CD] p-10"></div>
+              <div className="bg-linear-to-r from-[#C471F5] to-[#FA71CD] p-10"></div>
+              <div className="bg-linear-to-r from-[#C471F5] to-[#FA71CD] p-10"></div>
             </div>
           </div>
         </div>
