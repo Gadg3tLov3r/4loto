@@ -1,5 +1,3 @@
-"use client";
-
 interface SpecialLotteryCardProps {
   title: string;
   description: string;
@@ -7,8 +5,7 @@ interface SpecialLotteryCardProps {
   prizeAmount: string;
   drawDate: string;
   backgroundImage?: string;
-  onBuyTickets?: () => void;
-  onSeeResults?: () => void;
+  buttonGradient?: string;
 }
 
 export function SpecialLotteryCard({
@@ -17,23 +14,26 @@ export function SpecialLotteryCard({
   ticketsLeft,
   prizeAmount,
   drawDate,
-  backgroundImage = "/rabbit.png",
-  onBuyTickets,
-  onSeeResults,
+  backgroundImage,
+  buttonGradient,
 }: SpecialLotteryCardProps) {
   return (
     <div className="p-4 pt-0 border border-[#231968] rounded-[40px] h-[464px] flex flex-col">
       <div className="px-15">
         <div className="bg-white/8 backdrop-blur-3xl py-[9px] px-[24px] rounded-b-[30px] flex justify-center items-center">
-          <button
-            onClick={onSeeResults}
-            className="border border-[#44398D] py-[5px] px-[11.17px] rounded-[14.89px] text-[14.89px] hover:bg-white/10 transition-colors"
-          >
+          <button className="border border-[#44398D] py-[5px] px-[11.17px] rounded-[14.89px] text-[14.89px] hover:bg-white/10 transition-colors">
             See Results
           </button>
         </div>
       </div>
-      <div className="flex flex-col flex-1 rounded-3xl bg-[url('/rabbit.png')]  bg-cover bg-center">
+      <div
+        className="flex flex-col flex-1 rounded-3xl bg-center bg-cover"
+        style={{
+          backgroundImage: backgroundImage
+            ? `url('${backgroundImage}')`
+            : undefined,
+        }}
+      >
         <div className="flex-1"></div>
 
         <div className="grid grid-cols-3">
@@ -44,7 +44,7 @@ export function SpecialLotteryCard({
             </div>
           </div>
           <div className="bg-white/1 backdrop-blur-lg rounded-3xl flex justify-center items-center font-bold">
-            {prizeAmount}
+            ${prizeAmount}
           </div>
           <div className="text-center bg-[#130E38] p-2 rounded-t-3xl">
             <div className="text-xs text-white/40">Draw Starts</div>
@@ -57,10 +57,9 @@ export function SpecialLotteryCard({
             <p className="text-sm text-white/40">{description}</p>
           </div>
           <button
-            onClick={onBuyTickets}
-            className="h-[50px] bg-gradient-to-b from-[#F1991E] to-[#130E38] px-8 py-2 font-bold rounded-3xl self-center hover:from-[#F1991E]/90 hover:to-[#130E38]/90 transition-colors"
+            className={`h-[50px] ${buttonGradient} px-8 py-2 font-bold rounded-3xl self-center`}
           >
-            Buy tickets
+            Buy Tickets
           </button>
         </div>
       </div>

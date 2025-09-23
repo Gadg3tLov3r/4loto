@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const soraSans = Sora({
-  variable: "--font-geist-sans",
+  variable: "--font-sora-sans",
   subsets: ["latin"],
 });
 

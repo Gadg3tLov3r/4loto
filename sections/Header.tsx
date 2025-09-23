@@ -64,10 +64,10 @@ export const HeaderSection = () => {
         <div className="hidden md:flex justify-center items-center size-[50px] bg-linear-to-br from-[#B38626] via-[#F4E98F] to-[#A7791C] rounded-3xl">
           <Image src="/gift.png" alt="4loto" width="36" height="38" />
         </div>
-        <button className="bg-linear-to-r from-[#443AFF] to-[#C362FF] py-2 px-8 rounded-3xl font-semibold">
+        <button className="h-[50px] bg-linear-to-r from-[#443AFF] to-[#C362FF] py-2 px-8 rounded-3xl font-semibold">
           Create account
         </button>
-        <button className="px-8 py-2 border border-indigo-500 rounded-3xl font-semibold">
+        <button className="h-[50px] px-8 py-2 border border-indigo-500 rounded-3xl font-semibold">
           Login
         </button>
       </div>
