@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${soraSans.variable} ${geistMono.variable} antialiased`}
+        className={`${soraSans.variable} ${geistMono.variable} antialiased font-[family-name:var(--font-sora-sans)]`}
       >
         <ThemeProvider
           attribute="class"

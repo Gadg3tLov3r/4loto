@@ -51,7 +51,7 @@ export const SpecialLotteriesSection = () => {
   return (
     <>
       <div className="uppercase text-2xl font-bold">Special Lotteries</div>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {data.map((item, index) => (
           <SpecialLotteryCard
             key={index}

@@ -80,13 +80,13 @@ export const DailyDrawsSection = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="grid grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {data.map((item, index) => (
         <div
           key={index}
           className={`${item.gradient} p-10 rounded-[40px] space-y-4 relative overflow-clip h-[395px]`}
         >
-          <h1 className="uppercase font-semibold text-[33px] max-w-[5rem]">
+          <h1 className="uppercase font-semibold text-2xl md:text-[33px] max-w-[5rem]">
             {item.title}
           </h1>
           <div className="flex gap-2 items-center">
@@ -114,8 +114,8 @@ export const DailyDrawsSection = () => {
           <button className="bg-[#048AE0] px-8 py-2 rounded-3xl font-bold h-[50px] mt-5">
             Play now
           </button>
-          <div className="bg-linear-to-b from-[#C70042] to-[#FF0055] w-[120px] h-[110px] flex items-center justify-center absolute right-10 top-0">
-            <div className="uppercase font-bold max-w-[90px] text-center">
+          <div className="bg-linear-to-b from-[#C70042] to-[#FF0055] w-[74px] h-[81px] md:w-[120px] md:h-[110px] flex items-center justify-center absolute right-10 top-0">
+            <div className="text-[10px] md:text-base uppercase font-bold max-w-[50px] md:max-w-[90px] text-center">
               {item.badge}
             </div>
           </div>
