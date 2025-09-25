@@ -24,9 +24,9 @@ export function SpecialLotteryCard({
   ended,
 }: SpecialLotteryCardProps) {
   return (
-    <div className="p-4 pt-0 border border-[#231968] rounded-[40px]  h-[464px] flex flex-col">
+    <div className="p-4 pt-0 border border-[#231968] rounded-3xl md:rounded-[40px]  h-[464px] flex flex-col">
       <div className="flex justify-center">
-        <div className="bg-white/8 backdrop-blur-3xl py-[9px] px-[24px] h-[52px] min-w-[200px] rounded-b-[30px] flex justify-center items-center">
+        <div className="bg-white/8 backdrop-blur-3xl py-[9px] px-[24px] h-[52px] min-w-[200px] rounded-b-2xl md:rounded-b-[30px] flex justify-center items-center">
           {ended ? (
             <button className="border border-[#44398D] py-[5px] px-[11.17px] rounded-[14.89px] text-[14.89px] hover:bg-white/10 transition-colors">
               See Results
@@ -82,7 +82,7 @@ export function SpecialLotteryCard({
               </div>
             </div>
           </div>
-          <div className="bg-[#130E38] flex flex-col gap-2 p-4 rounded-b-3xl">
+          <div className="bg-[#130E38] flex flex-col gap-2 p-4 rounded-b-2xl md:rounded-b-3xl">
             <div className="text-center">
               <h2 className="text-white/80">{title}</h2>
               <p className="text-xs text-white/40">{description}</p>

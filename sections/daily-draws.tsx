@@ -84,7 +84,7 @@ export const DailyDrawsSection = () => {
       {data.map((item, index) => (
         <div
           key={index}
-          className={`${item.gradient} p-10 rounded-[40px] space-y-4 relative overflow-clip h-[395px]`}
+          className={`${item.gradient} p-10 rounded-[40px] space-y-4 relative overflow-clip h-[359px] md:h-[395px]`}
         >
           <h1 className="uppercase font-semibold text-2xl md:text-[33px] max-w-[5rem]">
             {item.title}
@@ -95,7 +95,7 @@ export const DailyDrawsSection = () => {
             </div>
             <div>
               <p className="text-xs">Time to the next draw</p>
-              <div className="text-2xl font-bold">
+              <div className="text-[20px] md:text-2xl font-semibold">
                 {timeLeft[index] || "00:00:00"}
               </div>
             </div>
@@ -106,7 +106,7 @@ export const DailyDrawsSection = () => {
             </div>
             <div>
               <p className="text-xs">Prize pool</p>
-              <div className="text-2xl font-bold">
+              <div className="text-[20px] md:text-2xl font-semibold">
                 ${formatPrize(item.prize)}
               </div>
             </div>
@@ -120,7 +120,7 @@ export const DailyDrawsSection = () => {
             </div>
           </div>
           <Image
-            className={`absolute right-0 -bottom-5  w-[220px] h-[220px] ${
+            className={`absolute right-0 -bottom-5 w-[210] h-[210]  md:w-[220px] md:h-[220px] ${
               index === 2 ? "rotate-0" : "-rotate-[13.65deg]"
             }`}
             src={item.image}
