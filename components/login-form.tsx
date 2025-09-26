@@ -1,13 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useAuth } from "@/contexts/auth-context";
 import { LoginCredentials } from "@/lib/auth";
 
@@ -15,6 +22,7 @@ import { LoginCredentials } from "@/lib/auth";
 const loginSchema = z.object({
   username: z.string().min(1, "Username is required"),
   password: z.string().min(1, "Password is required"),
+  principal: z.enum(["vendor", "admin"]),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -30,9 +38,13 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
+    defaultValues: {
+      principal: "vendor",
+    },
   });
 
   const onSubmit = async (data: LoginFormData) => {
@@ -43,7 +55,7 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
       const credentials: LoginCredentials = {
         username: data.username,
         password: data.password,
-        principal: "vendor",
+        principal: data.principal,
         rotate_session: true,
       };
 
@@ -111,6 +123,34 @@ export function LoginForm({ className, ...props }: LoginFormProps) {
           {errors.password && (
             <p className="text-destructive text-sm">
               {errors.password.message}
+            </p>
+          )}
+        </div>
+
+        <div className="grid gap-3">
+          <Label htmlFor="principal">Principal</Label>
+          <Controller
+            name="principal"
+            control={control}
+            render={({ field }) => (
+              <Select onValueChange={field.onChange} value={field.value}>
+                <SelectTrigger
+                  className={
+                    errors.principal ? "w-full border-destructive" : "w-full"
+                  }
+                >
+                  <SelectValue placeholder="Select principal" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="vendor">Vendor</SelectItem>
+                  <SelectItem value="admin">Admin</SelectItem>
+                </SelectContent>
+              </Select>
+            )}
+          />
+          {errors.principal && (
+            <p className="text-destructive text-sm">
+              {errors.principal.message}
             </p>
           )}
         </div>
