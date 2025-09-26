@@ -1,3 +1,5 @@
+"use client";
+
 import { BannersSection } from "@/sections/banners";
 import { DailyDrawsSection } from "@/sections/daily-draws";
 import { HeaderSection } from "@/sections/Header";

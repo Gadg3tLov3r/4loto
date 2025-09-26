@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import { ModeToggle } from "@/components/mode-toggle";
+import { LogoutButton } from "@/components/logout-button";
+import { useAuth } from "@/contexts/auth-context";
 
 export const HeaderSection = () => {
+  const { isAuthenticated, user } = useAuth();
+
   return (
     <header className="bg-[#0D063A] py-2 pl-3 pr-12 flex justify-between items-center fixed top-0 left-0 right-0 z-50">
       <div className="flex items-center gap-15">
@@ -64,12 +70,30 @@ export const HeaderSection = () => {
         <div className="hidden md:flex justify-center items-center size-[50px] bg-linear-to-br from-[#B38626] via-[#F4E98F] to-[#A7791C] rounded-3xl">
           <Image src="/gift.png" alt="4loto" width="36" height="38" />
         </div>
-        <button className="h-[50px] bg-linear-to-r from-[#443AFF] to-[#C362FF] py-2 px-8 rounded-3xl font-semibold">
-          Create account
-        </button>
-        <button className="h-[50px] px-8 py-2 border border-indigo-500 rounded-3xl font-semibold">
-          Login
-        </button>
+
+        {isAuthenticated ? (
+          <>
+            <div className="hidden md:flex items-center gap-2 text-white">
+              <span className="text-sm">Welcome, {user?.username}</span>
+              <div className="text-xs text-gray-300">
+                {user?.roles?.[0]?.name || "User"}
+              </div>
+            </div>
+            <LogoutButton variant="outline" />
+          </>
+        ) : (
+          <>
+            <button className="h-[50px] bg-linear-to-r from-[#443AFF] to-[#C362FF] py-2 px-8 rounded-3xl font-semibold">
+              Create account
+            </button>
+            <button
+              className="h-[50px] px-8 py-2 border border-indigo-500 rounded-3xl font-semibold"
+              onClick={() => (window.location.href = "/login")}
+            >
+              Login
+            </button>
+          </>
+        )}
       </div>
     </header>
   );
