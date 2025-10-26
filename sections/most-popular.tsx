@@ -18,7 +18,10 @@ export const MostPopularSection = () => {
             5-minute draws
           </h2>
           <p className="hidden md:block text-[#B38626] text-2xl font-bold uppercase">
-            Get your tickets before the time runs out
+            Get your tickets
+          </p>
+          <p className="hidden md:block text-[#B38626] text-2xl font-bold uppercase">
+            Before the time runs out
           </p>
         </div>
         <button className="bg-linear-to-b from-[#B38626] to-[#FCEE96] text-black px-8 py-2 rounded-3xl font-bold h-[50px]">

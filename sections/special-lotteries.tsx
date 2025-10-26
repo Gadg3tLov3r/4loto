@@ -8,7 +8,7 @@ const data = [
     ticketsSold: 9473,
     prizeAmount: "55000",
     drawDate: "2025-04-12",
-    backgroundImage: "/rabbit2.png",
+    backgroundImage: "/rabbit3.png",
     buttonGradient: "bg-gradient-to-b from-[#DFCDD9] to-[#130E38]",
     ended: true,
   },
@@ -51,7 +51,7 @@ export const SpecialLotteriesSection = () => {
   return (
     <>
       <div className="uppercase text-2xl font-bold">Special Lotteries</div>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-6">
         {data.map((item, index) => (
           <SpecialLotteryCard
             key={index}

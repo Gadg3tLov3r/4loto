@@ -8,8 +8,8 @@ export const HeroSection = () => {
         <span className="text-[32px] font-extrabold">LOTO</span>
       </div>
       <div className="flex items-start justify-center mt-12">
-        <div className="flex flex-col md:items-start items-center md:text-left text-center gap-6">
-          <h1 className="uppercase text-2xl md:text-[64px] font-bold leading-[130%] max-w-[250px] md:max-w-3xl">
+        <div className="flex flex-col md:items-start items-center md:text-left text-center gap-6 z-2">
+          <h1 className="uppercase text-2xl lg:text-[40px] 2xl:text-[64px] font-bold leading-[130%] max-w-[250px] lg:max-w-sm 2xl:max-w-3xl">
             Boost for your first deposit
           </h1>
           <Image
@@ -33,21 +33,21 @@ export const HeroSection = () => {
           </div>
         </div>
         <Image
-          className="hidden md:block -ml-[400px]"
+          className="hidden md:block 2xl:-ml-[400px] z-2 size-[450px] 2xl:size-[550px]"
           src="/rocket.png"
           alt="rocket"
           width={550}
           height={550}
         />
         <Image
-          className="hidden md:block absolute top-0 left-0 w-[492px] h-[487px]"
+          className="hidden md:block absolute top-0 left-0 w-[492px] h-[487px] z-1"
           src="/coins1.svg"
           alt="coins"
           width={492}
           height={487}
         />
         <Image
-          className="hidden md:block absolute top-0 right-0 w-[374px] h-[465px]"
+          className="hidden md:block absolute top-0 right-0 w-[374px] h-[465px] z-1"
           src="/coins2.svg"
           alt="coins"
           width={374}

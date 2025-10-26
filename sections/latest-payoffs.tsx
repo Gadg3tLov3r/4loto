@@ -1,6 +1,6 @@
 export const LatestPayoffsSection = () => {
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex gap-4 items-center overflow-hidden">
       <div className="font-bold text-white/60 flex-shrink-0">
         Latest payoffs today:
       </div>

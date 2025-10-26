@@ -1,0 +1,81 @@
+{
+  "ourLotteries": {
+    "title": "Our Lotteries",
+    "links": [
+      { "name": "5-minute draws", "url": "/lottery/5-minute" },
+      { "name": "Hourly draws", "url": "/lottery/hourly" },
+      { "name": "Daily draws", "url": "/lottery/daily" },
+      { "name": "Weekly draws", "url": "/lottery/weekly" },
+      { "name": "Special lotteries", "url": "/lottery/special" },
+      { "name": "Scratch Cards", "url": "/scratch-cards" },
+      { "name": "Instant spins", "url": "/instant-spins" },
+      { "name": "Results", "url": "/results" }
+    ]
+  },
+  "supportLegal": {
+    "title": "Support & Legal",
+    "links": [
+      { "name": "Legal information", "url": "/legal" },
+      { "name": "Live Support", "url": "/support" },
+      { "name": "Help Center", "url": "/help" },
+      { "name": "FAQ", "url": "/faq" },
+      { "name": "Fairness", "url": "/fairness" },
+      { "name": "Privacy Policy", "url": "/privacy" },
+      { "name": "Terms of use", "url": "/terms" },
+      { "name": "AML Policy", "url": "/aml-policy" }
+    ]
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "links": [
+      { "name": "News", "url": "/news" },
+      { "name": "About us", "url": "/about" },
+      { "name": "Partnership", "url": "/partnership" },
+      { "name": "Business Contacts", "url": "/business-contacts" }
+    ]
+  },
+  "promo": {
+    "title": "Promo",
+    "links": [
+      { "name": "Bonuses", "url": "/bonuses" },
+      { "name": "VIP Club", "url": "/vip-club" },
+      { "name": "Affiliate", "url": "/affiliate" }
+    ]
+  },
+  "socialMedia": {
+    "title": "Join Us on Social Media",
+    "description": "Stay connected for the latest updates, promotions, and winner announcements!",
+    "platforms": [
+      {
+        "name": "Facebook",
+        "url": "https://facebook.com",
+        "icon": "Facebook",
+        "color": "bg-blue-600 hover:bg-blue-700"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com",
+        "icon": "Twitter",
+        "color": "bg-sky-500 hover:bg-sky-600"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com",
+        "icon": "Instagram",
+        "color": "bg-pink-600 hover:bg-pink-700"
+      },
+      {
+        "name": "YouTube",
+        "url": "https://youtube.com",
+        "icon": "Youtube",
+        "color": "bg-red-600 hover:bg-red-700"
+      }
+    ]
+  },
+  "bottomLinks": [
+    { "name": "Sitemap", "url": "/sitemap" },
+    { "name": "Accessibility", "url": "/accessibility" },
+    { "name": "Cookie Policy", "url": "/cookies" }
+  ],
+  "copyright": "© 2024 4Loto. All rights reserved."
+}

@@ -51,7 +51,7 @@ export function SpecialLotteryCard({
       </div>
       <div className="flex-1 rounded-b-[30px] relative flex">
         <div
-          className="bg-cover bg-top mx-6 flex-1"
+          className="bg-cover bg-top mx-6 md:mx-[160px] 2xl:mx-6 flex-1"
           style={{
             backgroundImage: `url('${backgroundImage}')`,
           }}
@@ -70,7 +70,7 @@ export function SpecialLotteryCard({
                   : ticketsLeft}
               </div>
             </div>
-            <div className="bg-white/8 backdrop-blur-xl rounded-3xl flex justify-center items-center font-bold h-[54px] min-w-[118px]">
+            <div className="backdrop-blur rounded-3xl flex justify-center items-center font-bold h-[54px] min-w-[118px]">
               ${prizeAmount}
             </div>
             <div className="text-center bg-[#130E38] p-2 rounded-t-3xl">
