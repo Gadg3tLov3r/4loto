@@ -1,3 +1,6 @@
+"use client";
+
+import Link from "next/link";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
@@ -14,7 +17,16 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { Gift } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Gift, LogOut, User } from "lucide-react";
 import Image from "next/image";
 import { BannersSection } from "@/sections/banners";
 import { DailyDrawsSection } from "@/sections/daily-draws";
@@ -28,8 +40,18 @@ import { Sidebar } from "@/sections/Sidebar";
 import { SpecialLotteriesSection } from "@/sections/special-lotteries";
 import { StatisticsSection } from "@/sections/statistics";
 import { Footer } from "@/components/footer";
+import { useAuth } from "@/contexts/auth-context";
 
 export default function Page() {
+  const { user, isAuthenticated, logout } = useAuth();
+  const userInitials = user
+    ? (
+        (user.first_name?.[0] || "") + (user.last_name?.[0] || "") ||
+        user.username?.[0] ||
+        "U"
+      ).toUpperCase()
+    : "";
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -46,12 +68,64 @@ export default function Page() {
             <div className="hidden md:flex justify-center items-center size-[50px] bg-linear-to-br from-[#B38626] via-[#F4E98F] to-[#A7791C] rounded-3xl">
               <Image src="/gift.png" alt="4loto" width="36" height="38" />
             </div>
-            <button className="text-xs md:text-base md:h-[50px] bg-linear-to-r from-[#443AFF] to-[#C362FF] px-[18px] py-2 md:px-8 rounded-3xl font-semibold">
-              Create account
-            </button>
-            <button className="text-xs md:text-base md:h-[50px] px-[18px] md:px-8 py-2 border border-indigo-500 rounded-3xl font-semibold">
-              Login
-            </button>
+            {isAuthenticated && user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center gap-2 text-xs md:text-base md:h-[50px] px-[18px] md:px-4 py-2 border border-indigo-500 rounded-3xl font-semibold hover:bg-indigo-500/10 transition-colors">
+                    <Avatar className="h-6 w-6 md:h-8 md:w-8">
+                      <AvatarImage
+                        src={user.avatar || undefined}
+                        alt={user.username}
+                      />
+                      <AvatarFallback className="text-xs">
+                        {userInitials}
+                      </AvatarFallback>
+                    </Avatar>
+                    <span className="hidden md:inline">{user.username}</span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium leading-none">
+                        {user.first_name} {user.last_name}
+                      </p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {user.email}
+                      </p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard" className="cursor-pointer">
+                      <User className="mr-2 h-4 w-4" />
+                      Dashboard
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={logout}
+                    className="cursor-pointer text-red-600 focus:text-red-600"
+                  >
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Log out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <Link href="/signup">
+                  <button className="text-xs md:text-base md:h-[50px] bg-linear-to-r from-[#443AFF] to-[#C362FF] px-[18px] py-2 md:px-8 rounded-3xl font-semibold">
+                    Create account
+                  </button>
+                </Link>
+                <Link href="/login">
+                  <button className="text-xs md:text-base md:h-[50px] px-[18px] md:px-8 py-2 border border-indigo-500 rounded-3xl font-semibold hover:bg-indigo-500/10 transition-colors">
+                    Login
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
