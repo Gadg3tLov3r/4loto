@@ -219,3 +219,59 @@ export const getWithdrawLogs = async (
   }
 };
 
+export interface DepositLogItem {
+  order_id: string;
+  amount: number;
+  received_amount: number | null;
+  payment_method: string;
+  currency: string;
+  status: string;
+  created_at: string;
+}
+
+export interface DepositLogsResponse {
+  total: number;
+  page: number;
+  page_size: number;
+  items: DepositLogItem[];
+}
+
+export interface DepositLogsFilters {
+  page?: number;
+  page_size?: number;
+  status?: string;
+  order_id?: string;
+  start_date?: string;
+  end_date?: string;
+}
+
+// Get deposit logs
+export const getDepositLogs = async (
+  filters?: DepositLogsFilters
+): Promise<DepositLogsResponse> => {
+  try {
+    const params = new URLSearchParams();
+    if (filters?.page) params.append('page', filters.page.toString());
+    if (filters?.page_size) params.append('page_size', filters.page_size.toString());
+    if (filters?.status) params.append('status', filters.status);
+    if (filters?.order_id) params.append('order_id', filters.order_id);
+    if (filters?.start_date) params.append('start_date', filters.start_date);
+    if (filters?.end_date) params.append('end_date', filters.end_date);
+
+    const response = await gatewayApiClient.get<DepositLogsResponse>(
+      `/deposits/logs?${params.toString()}`
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const errorMessage =
+        error.response?.data?.detail ||
+        error.response?.data?.message ||
+        error.message ||
+        'Failed to fetch deposit logs. Please try again.';
+      throw new Error(errorMessage);
+    }
+    throw new Error('An unexpected error occurred. Please try again.');
+  }
+};
+
