@@ -26,8 +26,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Gift, LogOut, User } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import Image from "next/image";
+import { ModeToggle } from "@/components/mode-toggle";
 import { BannersSection } from "@/sections/banners";
 import { DailyDrawsSection } from "@/sections/daily-draws";
 import { HeaderSection } from "@/sections/Header";
@@ -65,13 +66,14 @@ export default function Page() {
             /> */}
           </div>
           <div className="ml-auto px-4 flex gap-2 items-center">
+            <ModeToggle />
             <div className="hidden md:flex justify-center items-center size-[50px] bg-linear-to-br from-[#B38626] via-[#F4E98F] to-[#A7791C] rounded-3xl">
               <Image src="/gift.png" alt="4loto" width="36" height="38" />
             </div>
             {isAuthenticated && user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2 text-xs md:text-base md:h-[50px] px-[18px] md:px-4 py-2 border border-indigo-500 rounded-3xl font-semibold hover:bg-indigo-500/10 transition-colors">
+                  <button className="flex items-center gap-2 h-[50px] text-xs md:text-base px-[18px] md:px-4 border border-indigo-500 rounded-3xl font-semibold hover:bg-indigo-500/10 transition-colors">
                     <Avatar className="h-6 w-6 md:h-8 md:w-8">
                       <AvatarImage
                         src={user.avatar || undefined}
@@ -120,12 +122,12 @@ export default function Page() {
             ) : (
               <>
                 <Link href="/signup">
-                  <button className="text-xs md:text-base md:h-[50px] bg-linear-to-r from-[#443AFF] to-[#C362FF] px-[18px] py-2 md:px-8 rounded-3xl font-semibold">
+                  <button className="h-[50px] text-xs md:text-base bg-linear-to-r from-[#443AFF] to-[#C362FF] px-[18px] md:px-8 rounded-3xl font-semibold">
                     Create account
                   </button>
                 </Link>
                 <Link href="/login">
-                  <button className="text-xs md:text-base md:h-[50px] px-[18px] md:px-8 py-2 border border-indigo-500 rounded-3xl font-semibold hover:bg-indigo-500/10 transition-colors">
+                  <button className="h-[50px] text-xs md:text-base px-[18px] md:px-8 border border-indigo-500 rounded-3xl font-semibold hover:bg-indigo-500/10 transition-colors">
                     Login
                   </button>
                 </Link>

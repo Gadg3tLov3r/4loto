@@ -275,3 +275,78 @@ export const getDepositLogs = async (
   }
 };
 
+export interface CreateDepositRequest {
+  amount: number;
+  payment_method: number;
+  currency: number;
+}
+
+export interface CreateDepositResponse {
+  payment_link: string;
+  order_id?: string;
+  message?: string;
+  [key: string]: any;
+}
+
+export interface PaymentMethod {
+  id: number;
+  name: string;
+  accept_payment: boolean;
+  accept_payout: boolean;
+  logo: string;
+}
+
+// Get payment methods
+export const getPaymentMethods = async (): Promise<PaymentMethod[]> => {
+  try {
+    const response = await gatewayApiClient.get<PaymentMethod[]>(
+      '/users/payment-methods'
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const errorMessage =
+        error.response?.data?.detail ||
+        error.response?.data?.message ||
+        error.message ||
+        'Failed to fetch payment methods. Please try again.';
+      throw new Error(errorMessage);
+    }
+    throw new Error('An unexpected error occurred. Please try again.');
+  }
+};
+
+// Create deposit
+export const createDeposit = async (
+  data: CreateDepositRequest
+): Promise<CreateDepositResponse> => {
+  try {
+    const token = getAccessToken();
+    if (!token) {
+      throw new Error('Not authenticated');
+    }
+
+    const response = await axios.post<CreateDepositResponse>(
+      `${API_BASE_URL}/tranasactions/deposit/create`,
+      data,
+      {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const errorMessage =
+        error.response?.data?.detail ||
+        error.response?.data?.message ||
+        error.message ||
+        'Failed to create deposit. Please try again.';
+      throw new Error(errorMessage);
+    }
+    throw new Error('An unexpected error occurred. Please try again.');
+  }
+};
+
