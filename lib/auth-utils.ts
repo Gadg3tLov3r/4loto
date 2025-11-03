@@ -69,7 +69,15 @@ export const clearAuthData = (): void => {
 };
 
 // JWT token utilities
-export const decodeJWT = (token: string): any | null => {
+export interface JWTPayload {
+  [key: string]: unknown;
+  exp?: number;
+  iat?: number;
+  user_id?: number;
+  username?: string;
+}
+
+export const decodeJWT = (token: string): JWTPayload | null => {
   try {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');

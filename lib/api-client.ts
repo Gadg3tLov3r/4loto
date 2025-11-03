@@ -285,7 +285,7 @@ export interface CreateDepositResponse {
   payment_link: string;
   order_id?: string;
   message?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface PaymentMethod {
