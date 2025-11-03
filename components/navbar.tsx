@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Settings, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useLayout } from "@/contexts/layout-context";
 import { useAuth } from "@/contexts/auth-context";
 import {
@@ -313,12 +313,6 @@ export function Navbar() {
               </Link>
             </>
           )}
-          <button
-            className="flex items-center justify-center size-[50px] rounded-lg hover:bg-gray-100 transition-colors"
-            aria-label="Settings"
-          >
-            <Settings className="w-5 h-5 text-gray-600" />
-          </button>
         </div>
       </div>
 

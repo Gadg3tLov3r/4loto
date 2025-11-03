@@ -85,7 +85,7 @@ export function Footer() {
 
   if (loading) {
     return (
-      <footer className="bg-[#19172C] text-white py-12 mt-16">
+      <footer className="relative z-50 bg-[#19172C] text-white py-12 mt-16">
         <div className="container mx-auto px-4">
           <div className="text-center text-gray-400">Loading footer...</div>
         </div>
@@ -95,7 +95,7 @@ export function Footer() {
 
   if (error || !footerData) {
     return (
-      <footer className="bg-[#19172C] text-white py-12 mt-16">
+      <footer className="relative z-50 bg-[#19172C] text-white py-12 mt-16">
         <div className="container mx-auto px-4">
           <div className="text-center text-gray-400">
             {error || "Unable to load footer content"}
@@ -139,7 +139,7 @@ export function Footer() {
       : "lg:grid-cols-5";
 
   return (
-    <footer className="bg-[#19172C] text-white py-12 mt-16">
+    <footer className="relative z-50 bg-[#19172C] text-white py-12 mt-16">
       <div className="container mx-auto px-4">
         <div
           className={`grid grid-cols-1 md:grid-cols-2 ${gridColsClass} gap-8`}
